@@ -18,6 +18,8 @@ Note: If any issue with eclipse import then run "gradle eclipse" to regrenerate 
 
 6) Run 
 
+Note: First change DB password in  flashservices/src/main/resources/application-*.properties
+
 - "gradle clean build run" to test project in local
 - "gradle clean build war" to generate war file
 
