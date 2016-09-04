@@ -1,5 +1,5 @@
 CREATE TABLE public.user (
-   userid   oid,
+   id SERIAL PRIMARY KEY,
    username   character varying(25),
    password   character varying(100),
    createdate   timestamp without time zone,
