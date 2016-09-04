@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  <classPathEntry location="/Users/Jignesh/Documents/Development/Eclipse/workspace/SecurityApp/WebContent/WEB-INF/lib/postgresql-9.3-1100-jdbc4.jar" />
+
+  <context id="inalabTables" targetRuntime="MyBatis3">
+    <jdbcConnection driverClass="org.postgresql.Driver"
+        connectionURL="jdbc:postgresql://localhost:5432/dhsflash"
+        userId="postgres"
+        password="dhsF#1">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+
+    <javaModelGenerator targetPackage="test" targetProject="flashservices">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="test"  targetProject="flashservices">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="test"  targetProject="flashservices">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table  tableName="user" domainObjectName="User" modelType="flat" 
+     enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false"
+     enableUpdateByExample="true">
+     </table>
+     
+         <table  tableName="department" domainObjectName="Department" modelType="flat" 
+     enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false"
+     enableUpdateByExample="true">
+     </table>
+     
+         <table  tableName="employee" domainObjectName="Employee" modelType="flat" 
+     enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false"
+     enableUpdateByExample="true">
+     </table>
+     
+         <table  tableName="kudos" domainObjectName="Kudos" modelType="flat" 
+     enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false"
+     enableUpdateByExample="true">
+     
+     
+<!--       <property name="useActualColumnNames" value="true"/> -->
+<!--       <generatedKey column="ID" sqlStatement="DB2" identity="true" /> -->
+<!--       <columnOverride column="DATE_FIELD" property="startDate" /> -->
+<!--       <ignoreColumn column="FRED" /> -->
+<!--       <columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> -->
+    </table>
+
+<!--     <table schema="cmvn" tableName="WATER_CONSUMPTION" domainObjectName="WaterConsumption" modelType="flat"  -->
+<!--      enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false" -->
+<!--      enableUpdateByExample="true"> -->
+<!--      </table> -->
+     
+<!--     <table schema="cmvn" tableName="FERTILIZER_CONSUMPTION" domainObjectName="FertilizerConsumption" modelType="flat"  -->
+<!--      enableUpdateByPrimaryKey="true" enableSelectByExample="false" enableDeleteByExample="false" -->
+<!--      enableUpdateByExample="true"> -->
+<!--      </table> -->
+     
+                             
+  </context>
+</generatorConfiguration>
