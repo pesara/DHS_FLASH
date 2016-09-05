@@ -1,5 +1,6 @@
 package com.inalab.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Assert;
@@ -27,17 +28,20 @@ public class TestLoginDaoImpl extends TestBase {
 	 * @throws Exception
 	 */
 	@Test
-	public void testCreateLogin() throws Exception {
+	public void testLoginDao() throws Exception {
 
 		dbHelper.deleteTestData();
 
 		Login record = new Login();
-		record.setUsername("test");
-		record.setPassword("test");
+		record.setUsername("UT_test");
+		record.setPassword("UT_test");
 		int id = -1;
 
+		/*
+		 * TEST insert method
+		 */
 		try {
-			System.out.println(loginDao);
+			
 			LOG.debug("LoginDao " + loginDao);
 			id = loginDao.insert(record);
 		} catch (Exception ex) {
@@ -48,12 +52,26 @@ public class TestLoginDaoImpl extends TestBase {
 		if (id == -1)
 			Assert.fail("Error creating login");
 
+		/*
+		 * Test find by ID
+		 */
 		Login login = loginDao.getById(id);
 
 		assertNotNull(login);
 
+		/*
+		 * Test find by username
+		 */
 		login = loginDao.getByUserName(record.getUsername());
 
 		assertNotNull(login);
+		
+		/*
+		 * Test Update password
+		 */
+		login.setPassword("UT1_test");
+		boolean retVal = loginDao.update(login);
+		login = loginDao.getByUserName(login.getUsername());
+		assertEquals("UT1_test", login.getPassword());
 	}
 }

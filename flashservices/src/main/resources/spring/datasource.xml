@@ -26,9 +26,13 @@ http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	
-<!-- 	<bean id="authTokenDao" class="com.inalab.dao.impl.AuthTokenDaoImpl"> -->
-<!-- 		<property name="dataSource" ref="dataSource"></property> -->
-<!-- 	</bean> -->
+	<bean id="departmentDao" class="com.inalab.dao.impl.DepartmentDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
 
+	<bean id="kudosDao" class="com.inalab.dao.impl.KudosDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
 	<!-- Add Logging Advice -->
 </beans>

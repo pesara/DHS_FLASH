@@ -41,12 +41,12 @@ public  abstract class CommonDaoImpl<T> extends JdbcDaoSupport implements Common
 		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(getDataSource());
 
 		if (LOG.isDebugEnabled())
-			LOG.debug("createLogin " + sql + " " + record.toString());
+			LOG.debug("create " + sql + " " + record.toString());
 
-		int retVal = template.update(sql, params, keyHolder, new String[] { "ID" });
+		int retVal = template.update(sql, params, keyHolder, new String[] { "id" });
 
 		if (retVal == -1) {
-			LOG.error("error while creating login");
+			LOG.error("error while creating ");
 			return -1;
 		}
 		return keyHolder.getKey().intValue();
