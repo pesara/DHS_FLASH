@@ -10,6 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import com.inalab.dao.EmployeeDao;
 import com.inalab.model.Employee;
+import com.inalab.model.Kudos;
 
 public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeDao {
 
@@ -137,9 +138,42 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 		return false;
 	}
 
+	
+
 	@Override
 	public boolean update(Employee record) {
-		// TODO Auto-generated method stub
+		String sql = DBQueries.getQuery("employee.update");
+		return super.update(record, sql);
+	}
+
+	@Override
+	public Employee getById(int employeeId) {
+		String sql = DBQueries.getQuery("employee.getById");
+		return super.getById(employeeId, sql);
+	}
+
+	@Override
+	public boolean updateActiveIndicator(int employeeId, String status) {
+		String getSql = DBQueries.getQuery("employee.setActive");
+
+		int retVal = -1;
+
+		try {
+			retVal = getJdbcTemplate().update(getSql, new Object[] { employeeId, status });
+
+		} catch (EmptyResultDataAccessException ex) {
+			LOG.error("No Record found for " + employeeId + " " + status);
+
+		}
+
+		if (retVal > 0) {
+
+			if (LOG.isDebugEnabled())
+				LOG.debug("Record updated ");
+
+			return true;
+		}
+
 		return false;
 	}
 

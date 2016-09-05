@@ -72,7 +72,7 @@ public class LoginController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/id/{id}", method = RequestMethod.GET)
 	ResponseEntity<?> getLogin(@PathVariable int id) {
 		this.validateUser(id);
 		Login login = this.loginDao.getById(id);
@@ -88,7 +88,7 @@ public class LoginController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping(value = "/{userName}", method = RequestMethod.GET)
+	@RequestMapping(value = "/name/{userName}", method = RequestMethod.GET)
 	ResponseEntity<?> getLoginByName(@PathVariable String userName) {
 		this.validateUser(userName);
 		Login login = this.loginDao.getByUserName(userName);

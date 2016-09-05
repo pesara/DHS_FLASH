@@ -3,6 +3,7 @@ package com.inalab.dao;
 import static org.junit.Assert.assertNotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -72,13 +73,13 @@ public class TestKudosDaoImpl extends TestBase {
 		/*
 		 * Test find by ID
 		 */
-		Kudos kudos = kudosDao.getByToEmployee(employeeTwo);
+		List<Kudos> kudosList = kudosDao.getByToEmployee(employeeTwo);
 
-		assertNotNull(kudos);
+		assertNotNull(kudosList);
 
-		kudos = kudosDao.getByFromEmployee(employeeOne);
+		kudosList = kudosDao.getByFromEmployee(employeeOne);
 
-		assertNotNull(kudos);
+		assertNotNull(kudosList);
 
 	}
 

@@ -11,22 +11,38 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import com.inalab.dao.KudosDao;
 import com.inalab.model.Kudos;
 
-public class KudosDaoImpl extends CommonDaoImpl<Kudos> implements KudosDao {
+public class KudosDaoImpl extends CommonDaoImpl<Kudos>implements KudosDao {
 
 	private BeanPropertyRowMapper<Kudos> kudosRowMapper = new BeanPropertyRowMapper<Kudos>(Kudos.class);
 
 	private static final Logger LOG = LoggerFactory.getLogger(KudosDaoImpl.class);
 
 	@Override
-	public Kudos getByFromEmployee(int employeeId) {
+	public List<Kudos> getByFromEmployee(int employeeId) {
 		String sql = DBQueries.getQuery("kudos.getByFrom");
-		return super.getById(employeeId, sql);
+		List<Kudos> recordList = null;
+
+		try {
+			recordList = getJdbcTemplate().query(sql, new Object[] { employeeId }, kudosRowMapper);
+		} catch (EmptyResultDataAccessException ex) {
+			LOG.error("No Record Found for " + employeeId + " " + sql);
+		}
+
+		return recordList;
 	}
 
 	@Override
-	public Kudos getByToEmployee(int employeeId) {
+	public List<Kudos> getByToEmployee(int employeeId) {
 		String sql = DBQueries.getQuery("kudos.getByTo");
-		return super.getById(employeeId, sql);
+		List<Kudos> recordList = null;
+
+		try {
+			recordList = getJdbcTemplate().query(sql, new Object[] { employeeId }, kudosRowMapper);
+		} catch (EmptyResultDataAccessException ex) {
+			LOG.error("No Record Found for " + employeeId + " " + sql);
+		}
+
+		return recordList;
 	}
 
 	@Override
@@ -35,7 +51,8 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos> implements KudosDao {
 		List<Kudos> recordList = null;
 
 		try {
-			recordList = getJdbcTemplate().query(sql, new Object[] { Calendar.getInstance().getTime() }, kudosRowMapper);
+			recordList = getJdbcTemplate().query(sql, new Object[] { Calendar.getInstance().getTime() },
+					kudosRowMapper);
 		} catch (EmptyResultDataAccessException ex) {
 			LOG.error("No Record Found for " + date + " " + sql);
 		}
@@ -48,6 +65,26 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos> implements KudosDao {
 		String sql = DBQueries.getQuery("kudos.insert");
 		return super.insert(record, sql);
 	}
-	
+
+	@Override
+	public Kudos getFromEmployeeToEmployee(int fromEmployeeId, int toEmployeeId) {
+		String sql = DBQueries.getQuery("kudos.getByFromEmployeeToEmployee");
+		Kudos record = null;
+
+		try {
+			record = getJdbcTemplate().queryForObject(sql, new Object[] { fromEmployeeId, toEmployeeId },
+					kudosRowMapper);
+		} catch (EmptyResultDataAccessException ex) {
+			LOG.error("No Record Found for kudos from " + fromEmployeeId + " to " + toEmployeeId + " " + sql);
+		}
+
+		return record;
+	}
+
+	@Override
+	public boolean update(Kudos record) {
+		String sql = DBQueries.getQuery("kudos.update");
+		return super.update(record, sql);
+	}
 
 }

@@ -39,6 +39,7 @@ public class DepartmentDaoImpl extends CommonDaoImpl<Department>implements Depar
 		return super.getById(id, sql);
 	}
 
+	
 	@Override
 	public int insert(Department record) {
 		String sql = DBQueries.getQuery("department.insert");
@@ -49,6 +50,22 @@ public class DepartmentDaoImpl extends CommonDaoImpl<Department>implements Depar
 	public boolean update(Department record) {
 		String sql = DBQueries.getQuery("department.update");
 		return super.update(record, sql);
+	}
+
+	@Override
+	public Department getByName(String departmentName) {
+		String sql = DBQueries.getQuery("department.getByName");
+		
+		Department record = null;
+
+		try {
+			record = getJdbcTemplate().queryForObject(sql, new Object[] { departmentName }, departmentRowMapper);
+		} catch (EmptyResultDataAccessException ex) {
+			LOG.error("No Record Found for " + departmentName + " " + sql);
+		}
+
+		return record;
+		
 	}
 	
 }

@@ -13,10 +13,25 @@ public interface LoginDao {
 	 */
 	int insert(Login record);
 	
+	/**
+	 * Get login by user id
+	 * @param id
+	 * @return
+	 */
 	Login getById(int id);
 	
+	/**
+	 * Get login by username
+	 * @param userName
+	 * @return
+	 */
 	Login getByUserName(String userName);
 	
+	/**
+	 * Update login data
+	 * @param record
+	 * @return
+	 */
 	boolean update(Login record);
 	
 	
