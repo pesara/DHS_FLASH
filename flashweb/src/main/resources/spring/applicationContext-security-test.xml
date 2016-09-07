@@ -1,0 +1,25 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security.xsd">
+
+ 
+<!--  <http auto-config="true" security="none"/> -->
+ 
+<!--  	<http use-expressions="true"> -->
+<!-- 		<intercept-url pattern="swagger-ui" access="permitAll" method="GET"/> -->
+<!-- 		<intercept-url pattern="/assets/" access="permitAll" method="GET"/>		 -->
+<!--         <intercept-url pattern="/secured/**" access="isAuthenticated()" /> -->
+<!--         <form-login /> -->
+<!--     </http> -->
+    
+<!-- 	<authentication-manager> -->
+<!-- 	  <authentication-provider ref="domainUsernamePasswordAuthenticationProvider" /> -->
+<!-- 	</authentication-manager>   -->
+    
+<!-- <http pattern="/swagger-ui/**" security="none"/> -->
+
+</beans:beans>

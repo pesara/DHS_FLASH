@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:context="http://www.springframework.org/schema/context"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/tx/spring-aop-3.1.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+<context:component-scan base-package="com"/>
+
+
+<bean id="applicationProperties"
+class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreResourceNotFound" value="false" />
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+		<property name="searchSystemEnvironment" value="false" />
+	<property name="location">
+		<value>classpath:/application-${env:dev}.properties</value>
+	</property>
+</bean>
+
+
+
+	<bean id="propertiesUtil" class="com.inalab.util.PropertiesUtil">
+		<property name="location" value="classpath:/application-${env:dev}.properties" />
+	</bean>
+	
+
+<bean id="Log4jInitialization"
+    class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+      <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+      <property name="targetMethod" value="initLogging" />
+      <property name="arguments">
+      		<list>
+      			<value>classpath:log4j.xml</value>
+      			<value>300000</value>
+      		</list>
+      </property>
+    </bean>
+	<!-- Database Configuration -->
+	<import resource="/datasource.xml"/>
+	<import resource="/applicationContext-security-${env:dev}.xml"/>
+</beans>
