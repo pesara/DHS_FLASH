@@ -67,8 +67,8 @@ public class KudosController {
 	@RequestMapping(method = RequestMethod.POST, consumes = "application/json")
 	ResponseEntity<?> create(@RequestBody Kudos input) {
 
-		Kudos kudos = this.kudosDao.getFromEmployeeToEmployee(input.getFromEid().intValue(),
-				input.getToEid().intValue());
+		Kudos kudos = this.kudosDao.getFromEmployeeToEmployee(input.getFromEid().longValue(),
+				input.getToEid().longValue());
 		long id = -1;
 		if (kudos == null) {
 			input.setCount(new BigDecimal(1)); // default
@@ -76,7 +76,7 @@ public class KudosController {
 			input.setId(id);
 		} else {
 			// Already exist so updating
-			int count = kudos.getCount().intValue();
+			long count = kudos.getCount().longValue();
 			input.setCount(new BigDecimal(count + 1));
 			this.kudosDao.update(input);
 		}
@@ -103,7 +103,7 @@ public class KudosController {
 		if (kudos == null)
 			throw new KudosNotFoundException();
 
-		int count = kudos.getCount().intValue();
+		long count = kudos.getCount().longValue();
 		input.setCount(new BigDecimal(count + 1));
 		this.kudosDao.update(input);
 
@@ -116,8 +116,8 @@ public class KudosController {
 	}
 
 	private Kudos getKudos(Kudos input) {
-		Kudos kudos = this.kudosDao.getFromEmployeeToEmployee(input.getFromEid().intValue(),
-				input.getToEid().intValue());
+		Kudos kudos = this.kudosDao.getFromEmployeeToEmployee(input.getFromEid().longValue(),
+				input.getToEid().longValue());
 
 		return kudos;
 

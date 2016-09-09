@@ -34,14 +34,14 @@ public class DepartmentDaoImpl extends CommonDaoImpl<Department>implements Depar
 	}
 
 	@Override
-	public Department getById(int id) {
+	public Department getById(long id) {
 		String sql = DBQueries.getQuery("department.getById");
 		return super.getById(id, sql);
 	}
 
 	
 	@Override
-	public int insert(Department record) {
+	public long insert(Department record) {
 		String sql = DBQueries.getQuery("department.insert");
 		return super.insert(record, sql);
 	}

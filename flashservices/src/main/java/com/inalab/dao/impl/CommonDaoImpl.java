@@ -32,7 +32,7 @@ public  abstract class CommonDaoImpl<T> extends JdbcDaoSupport implements Common
 	}
 
 	@Override
-	public int insert(T record, String sql) {
+	public long insert(T record, String sql) {
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -49,11 +49,11 @@ public  abstract class CommonDaoImpl<T> extends JdbcDaoSupport implements Common
 			LOG.error("error while creating ");
 			return -1;
 		}
-		return keyHolder.getKey().intValue();
+		return keyHolder.getKey().longValue();
 	}
 
 	@Override
-	public T getById(int id, String sql) {
+	public T getById(long id, String sql) {
 
 		T record = null;
 
@@ -87,7 +87,7 @@ public  abstract class CommonDaoImpl<T> extends JdbcDaoSupport implements Common
 	}
 
 	@Override
-	public List<T> getListById(int id, String sql) {
+	public List<T> getListById(long id, String sql) {
 		List<T> recordList = null;
 
 		try {

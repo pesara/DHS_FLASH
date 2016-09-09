@@ -18,6 +18,6 @@
 <!-- 	</authentication-manager>   -->
     
 <!-- <http pattern="/swagger-ui/**" security="none"/> -->
- 
+  <http auto-config="true" security="none"/>
  
 </beans:beans>

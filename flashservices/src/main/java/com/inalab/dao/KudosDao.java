@@ -11,14 +11,14 @@ public interface KudosDao {
 	 * @param employeeId
 	 * @return
 	 */
-	List<Kudos> getByFromEmployee(int employeeId);
+	List<Kudos> getByFromEmployee(long employeeId);
 	
 	/**
 	 * Get Kudos give to input employeeId
 	 * @param employeeId
 	 * @return
 	 */
-	List<Kudos> getByToEmployee(int employeeId);
+	List<Kudos> getByToEmployee(long employeeId);
 	
 	/**
 	 * Get all the latest kudos detail for given date
@@ -32,7 +32,7 @@ public interface KudosDao {
 	 * @param record
 	 * @return
 	 */
-	int insert(Kudos record);
+	long insert(Kudos record);
 	
 	/**
 	 * Get Kudos given to employee from specific employee
@@ -40,7 +40,7 @@ public interface KudosDao {
 	 * @param toEmployeeId
 	 * @return
 	 */
-	Kudos getFromEmployeeToEmployee(int fromEmployeeId, int toEmployeeId);
+	Kudos getFromEmployeeToEmployee(long fromEmployeeId, long toEmployeeId);
 	
 	/**
 	 * Update kudos detail

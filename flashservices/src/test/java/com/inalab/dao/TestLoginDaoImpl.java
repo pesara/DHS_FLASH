@@ -35,7 +35,7 @@ public class TestLoginDaoImpl extends TestBase {
 		Login record = new Login();
 		record.setUsername("UT_test");
 		record.setPassword("UT_test");
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method

@@ -20,7 +20,7 @@ public class LoginDaoImpl extends JdbcDaoSupport implements LoginDao {
 	private BeanPropertyRowMapper<Login> loginRowMapper = new BeanPropertyRowMapper<Login>(Login.class);
 
 	@Override
-	public int insert(Login record) {
+	public long insert(Login record) {
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -43,7 +43,7 @@ public class LoginDaoImpl extends JdbcDaoSupport implements LoginDao {
 	}
 
 	@Override
-	public Login getById(int id) {
+	public Login getById(long id) {
 		String getSql = DBQueries.getQuery("login.getById");
 		
 		Login record = null;

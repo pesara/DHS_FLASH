@@ -26,7 +26,7 @@ public interface EmployeeDao {
 	 * @param record
 	 * @return
 	 */
-	int insert(Employee record);
+	long insert(Employee record);
 
 	/**
 	 * Assign department to employee
@@ -34,7 +34,7 @@ public interface EmployeeDao {
 	 * @param departmentId
 	 * @return
 	 */
-	String addEmployeeToDept(int employeeId, int departmentId);
+	String addEmployeeToDept(long employeeId, long departmentId);
 
 	/**
 	 * Find employee joined on given date
@@ -48,7 +48,7 @@ public interface EmployeeDao {
 	 * @param departmentId
 	 * @return
 	 */
-	List<Employee> findAllEmployeesByDepartment(int departmentId);
+	List<Employee> findAllEmployeesByDepartment(long departmentId);
 
 	/**
 	 * Get employee based on employeeId and departmentId where active indicator is not 'N'
@@ -56,7 +56,7 @@ public interface EmployeeDao {
 	 * @param departmentId
 	 * @return
 	 */
-	Employee getEmployeeByDepartmentId(int employeeId, int departmentId);
+	Employee getEmployeeByDepartmentId(long employeeId, long departmentId);
 
 	/**
 	 * Update department id for the given employee
@@ -64,7 +64,7 @@ public interface EmployeeDao {
 	 * @param departmentId
 	 * @return
 	 */
-	boolean updateDepartmentId(int employeeId, int departmentId);
+	boolean updateDepartmentId(long employeeId, long departmentId);
 
 	/**
 	 * Update employee data
@@ -78,7 +78,7 @@ public interface EmployeeDao {
 	 * @param employeeId
 	 * @return
 	 */
-	Employee getById(int employeeId);
+	Employee getById(long employeeId);
     
 	/**
 	 * Update employee activation 
@@ -86,5 +86,5 @@ public interface EmployeeDao {
 	 * @param status
 	 * @return
 	 */
-	boolean updateActiveIndicator(int employeeId, String status );
+	boolean updateActiveIndicator(long employeeId, String status );
 }

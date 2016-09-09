@@ -79,8 +79,8 @@ public class EmployeeController {
 	@RequestMapping(value = "/department", method = RequestMethod.POST, consumes = "application/json")
 	ResponseEntity<?> getEmployeeByDepartmentId(@RequestBody Employee input) {
 
-		Employee employee = this.employeeDao.getEmployeeByDepartmentId(input.getId().intValue(),
-				input.getDepartmentid().intValue());
+		Employee employee = this.employeeDao.getEmployeeByDepartmentId(input.getId(),
+				input.getDepartmentid().longValue());
 		HttpHeaders httpHeaders = new HttpHeaders();
 		ApiResponse response = JSONResponse.getResponse(employee);
 		return new ResponseEntity<>(response, httpHeaders, HttpStatus.OK);
@@ -159,7 +159,7 @@ public class EmployeeController {
 	
 	
 	private Employee getEmployee(Employee input) {
-		Employee employee = this.employeeDao.getById(input.getId().intValue());
+		Employee employee = this.employeeDao.getById(input.getId());
 
 		return employee;
 

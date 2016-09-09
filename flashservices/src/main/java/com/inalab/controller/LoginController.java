@@ -35,7 +35,7 @@ public class LoginController {
 
 		Login login = this.loginDao.getByUserName(input.getUsername());
 		if (login == null) {
-			int id = this.loginDao.insert(input);
+			long id = this.loginDao.insert(input);
 			login = this.loginDao.getById(id);
 		}
 		HttpHeaders httpHeaders = new HttpHeaders();

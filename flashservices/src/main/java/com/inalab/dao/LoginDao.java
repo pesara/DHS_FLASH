@@ -1,7 +1,5 @@
 package com.inalab.dao;
 
-import java.util.List;
-
 import com.inalab.model.Login;
 
 public interface LoginDao {
@@ -11,14 +9,14 @@ public interface LoginDao {
 	 * @param record
 	 * @return
 	 */
-	int insert(Login record);
+	long insert(Login record);
 	
 	/**
 	 * Get login by user id
 	 * @param id
 	 * @return
 	 */
-	Login getById(int id);
+	Login getById(long id);
 	
 	/**
 	 * Get login by username

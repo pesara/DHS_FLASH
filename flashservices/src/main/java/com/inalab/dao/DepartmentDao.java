@@ -17,7 +17,7 @@ public interface DepartmentDao {
 	 * @param id
 	 * @return
 	 */
-	Department getById(int id);
+	Department getById(long id);
 	
 	/**
 	 * Get department by name
@@ -31,7 +31,12 @@ public interface DepartmentDao {
 	 * @param record
 	 * @return
 	 */
-	int insert(Department record);
+	long insert(Department record);
 	
+	/**
+	 * Update department detail
+	 * @param record
+	 * @return
+	 */
 	boolean update(Department record);
 }

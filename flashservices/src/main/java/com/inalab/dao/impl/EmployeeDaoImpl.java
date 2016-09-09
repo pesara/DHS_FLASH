@@ -53,13 +53,13 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 	}
 
 	@Override
-	public int insert(Employee record) {
+	public long insert(Employee record) {
 		String sql = DBQueries.getQuery("employee.insert");
 		return super.insert(record, sql);
 	}
 
 	@Override
-	public String addEmployeeToDept(int employeeId, int departmentId) {
+	public String addEmployeeToDept(long employeeId, long departmentId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -81,7 +81,7 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 	}
 
 	@Override
-	public List<Employee> findAllEmployeesByDepartment(int departmentId) {
+	public List<Employee> findAllEmployeesByDepartment(long departmentId) {
 
 		List<Employee> recordList = null;
 
@@ -98,7 +98,7 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 	}
 
 	@Override
-	public Employee getEmployeeByDepartmentId(int employeeId, int departmentId) {
+	public Employee getEmployeeByDepartmentId(long employeeId, long departmentId) {
 		String getSql = DBQueries.getQuery("employee.getEmployeeByDepartmentId");
 
 		Employee record = null;
@@ -114,7 +114,7 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 	}
 
 	@Override
-	public boolean updateDepartmentId(int employeeId, int departmentId) {
+	public boolean updateDepartmentId(long employeeId, long departmentId) {
 		String getSql = DBQueries.getQuery("employee.addToDepartment");
 
 		int retVal = -1;
@@ -147,13 +147,13 @@ public class EmployeeDaoImpl extends CommonDaoImpl<Employee>implements EmployeeD
 	}
 
 	@Override
-	public Employee getById(int employeeId) {
+	public Employee getById(long employeeId) {
 		String sql = DBQueries.getQuery("employee.getById");
 		return super.getById(employeeId, sql);
 	}
 
 	@Override
-	public boolean updateActiveIndicator(int employeeId, String status) {
+	public boolean updateActiveIndicator(long employeeId, String status) {
 		String getSql = DBQueries.getQuery("employee.setActive");
 
 		int retVal = -1;

@@ -10,7 +10,7 @@
   </appender> 
 
    <appender name="inalab.file" class="org.apache.log4j.DailyRollingFileAppender">
-   	<param name="file" value="/User/Jignesh/inalab.log"/>
+   	<param name="file" value="~/inalab.log"/>
    	<param name="append" value="false"/>
    	<param name="DataPattern" value="'.'yyyy-MM-dd-a"/>
    	<layout class="org.apache.log4j.PatternLayout">

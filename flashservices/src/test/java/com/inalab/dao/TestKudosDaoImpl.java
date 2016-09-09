@@ -46,14 +46,14 @@ public class TestKudosDaoImpl extends TestBase {
 	public void testDepartmentDao() throws Exception {
 
 		dbHelper.deleteTestData();
-		int employeeOne = getEmployeeId(1);
-		int employeeTwo = getEmployeeId(2);
+		long employeeOne = getEmployeeId(1);
+		long employeeTwo = getEmployeeId(2);
 
 		Kudos record = new Kudos();
 		record.setFromEid(new BigDecimal(employeeOne));
 		record.setToEid(new BigDecimal(employeeTwo));
 
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
@@ -83,11 +83,11 @@ public class TestKudosDaoImpl extends TestBase {
 
 	}
 
-	private int getDepartmentId() {
+	private long getDepartmentId() {
 		Department record = new Department();
 		record.setDepartmentname("UT_TestDepartment");
 
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
@@ -104,11 +104,11 @@ public class TestKudosDaoImpl extends TestBase {
 		return id;
 	}
 
-	private int getLoginId() {
+	private long getLoginId() {
 		Login record = new Login();
 		record.setUsername("UT_test");
 		record.setPassword("UT_test");
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
@@ -125,10 +125,10 @@ public class TestKudosDaoImpl extends TestBase {
 		return id;
 	}
 
-	private int getEmployeeId(int count) {
+	private long getEmployeeId(int count) {
 
-		int userId = getLoginId();
-		int departmentId = getDepartmentId();
+		long userId = getLoginId();
+		long departmentId = getDepartmentId();
 
 		Employee record = new Employee();
 		record.setEmail("UT@test.com");
@@ -137,7 +137,7 @@ public class TestKudosDaoImpl extends TestBase {
 		record.setDepartmentid(new BigDecimal(departmentId));
 		record.setUserid(new BigDecimal(userId));
 
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method

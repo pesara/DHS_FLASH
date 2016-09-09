@@ -42,8 +42,8 @@ public class TestEmployeeDaoImpl extends TestBase {
 	public void testEmployeeDao() throws Exception {
 
 		dbHelper.deleteTestData();
-		int userId = getLoginId();
-		int departmentId = getDepartmentId();
+		long userId = getLoginId();
+		long departmentId = getDepartmentId();
 		
 		Employee record = new Employee();
 		record.setEmail("UT@test.com");
@@ -52,7 +52,7 @@ public class TestEmployeeDaoImpl extends TestBase {
 		record.setDepartmentid(new BigDecimal(departmentId));
 		record.setUserid(new BigDecimal(userId));
 		
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
@@ -86,11 +86,11 @@ public class TestEmployeeDaoImpl extends TestBase {
 
 	}
 	
-	private int getDepartmentId() {
+	private long getDepartmentId() {
 		Department record = new Department();
 		record.setDepartmentname("UT_TestDepartment");
 		
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
@@ -107,11 +107,11 @@ public class TestEmployeeDaoImpl extends TestBase {
 		return id;
 	}
 	
-	private int getLoginId() {
+	private long getLoginId() {
 		Login record = new Login();
 		record.setUsername("UT_test");
 		record.setPassword("UT_test");
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method

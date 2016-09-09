@@ -61,7 +61,7 @@ public class Application {
 	}
 
 	@Bean
-	public Docket petApi() {
+	public Docket swaggerApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any())
 				.paths(PathSelectors.any()).build().pathMapping("/")
 				.directModelSubstitute(LocalDate.class, String.class).genericModelSubstitutes(ResponseEntity.class)
@@ -97,7 +97,7 @@ public class Application {
 
 	@Bean
 	SecurityConfiguration security() {
-		return new SecurityConfiguration("test-app-client-id", "test-app-realm", "test-app", "apiKey");
+		return new SecurityConfiguration("app-client-id", "app-realm", "app", "apiKey");
 	}
 
 	@Bean

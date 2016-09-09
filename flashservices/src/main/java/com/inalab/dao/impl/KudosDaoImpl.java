@@ -18,7 +18,7 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos>implements KudosDao {
 	private static final Logger LOG = LoggerFactory.getLogger(KudosDaoImpl.class);
 
 	@Override
-	public List<Kudos> getByFromEmployee(int employeeId) {
+	public List<Kudos> getByFromEmployee(long employeeId) {
 		String sql = DBQueries.getQuery("kudos.getByFrom");
 		List<Kudos> recordList = null;
 
@@ -32,7 +32,7 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos>implements KudosDao {
 	}
 
 	@Override
-	public List<Kudos> getByToEmployee(int employeeId) {
+	public List<Kudos> getByToEmployee(long employeeId) {
 		String sql = DBQueries.getQuery("kudos.getByTo");
 		List<Kudos> recordList = null;
 
@@ -61,13 +61,13 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos>implements KudosDao {
 	}
 
 	@Override
-	public int insert(Kudos record) {
+	public long insert(Kudos record) {
 		String sql = DBQueries.getQuery("kudos.insert");
 		return super.insert(record, sql);
 	}
 
 	@Override
-	public Kudos getFromEmployeeToEmployee(int fromEmployeeId, int toEmployeeId) {
+	public Kudos getFromEmployeeToEmployee(long fromEmployeeId, long toEmployeeId) {
 		String sql = DBQueries.getQuery("kudos.getByFromEmployeeToEmployee");
 		Kudos record = null;
 
@@ -86,5 +86,7 @@ public class KudosDaoImpl extends CommonDaoImpl<Kudos>implements KudosDao {
 		String sql = DBQueries.getQuery("kudos.update");
 		return super.update(record, sql);
 	}
+
+
 
 }

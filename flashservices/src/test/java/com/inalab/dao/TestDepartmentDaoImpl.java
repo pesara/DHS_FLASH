@@ -37,7 +37,7 @@ public class TestDepartmentDaoImpl extends TestBase {
 		Department record = new Department();
 		record.setDepartmentname("UT_TestDepartment");
 		
-		int id = -1;
+		long id = -1;
 
 		/*
 		 * TEST insert method
